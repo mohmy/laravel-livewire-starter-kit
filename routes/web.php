@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 use Livewire\Volt\Volt;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,6 +30,11 @@ Route::middleware(['auth'])->group(function () {
             ),
         )
         ->name('two-factor.show');
+
+    Route::name('admin.')->prefix('admin')->group(function () {
+        Route::resource('users', UserController::class)->names('user');
+    });
+
 });
 
 require __DIR__.'/auth.php';
