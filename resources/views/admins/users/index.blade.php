@@ -1,6 +1,6 @@
 <x-layouts.app>
     <div class="min-w-full align-middle">
-        <table class="min-w-full divide-y divide-gray-200 border">
+        <table class="min-w-full divide-y divide-gray-200 border rounded">
             <thead>
             <tr>
                 <th class="px-6 py-3 bg-gray-50 text-left">
@@ -18,8 +18,9 @@
                         {{ $user->name }}
                     </td>
                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
-                        <a href="route('admin.user.edit', $task)">Edit</a>
-                        <button>Delete</button>
+                        <flux:button :href="route('admin.user.show', $user)">Edit</flux:button>
+                        <a href="{{route('admin.user.edit', $user)}}" class="bg-green-500 m-2 p-2">Edit</a>
+                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
                     </td>
                 </tr>
             @endforeach
